@@ -2,7 +2,7 @@
 A tool for AtCoder Beginner Contest question practice.
 
 ## Usage
-build this program
+build this program.
 ```
 cargo build --release
 ```
