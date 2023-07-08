@@ -7,7 +7,11 @@ build this program
 
 ## Example
 To create Python files `a.py`, `b.py`, ..., `g.py` in the current directory, run the following command:
-`atcoder_init`
+```
+atcoder_init
+```
 
 To create Python files in specific directories, run the following command:
-`atcoder_init dir1 dir2 dir3`
+```
+atcoder_init dir1 dir2 dir3
+```
