@@ -3,7 +3,9 @@ A tool for AtCoder Beginner Contest question practice.
 
 ## Usage
 build this program
-`cargo build --release`
+```
+cargo build --release
+```
 Put it in the appropriate directory.
 
 ## Example
