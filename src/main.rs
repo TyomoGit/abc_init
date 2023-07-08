@@ -28,8 +28,12 @@ fn make_directory(path: &String) {
 }
 
 fn make_python_files(dir_name: &String) {
-    for alphabet in 'a'..='g' {
-        let name = dir_name.to_owned() + "/" + &alphabet.to_string() + ".py";
+    let question_names = vec![
+        "a", "b", "c", "d", "e", "f", "g", "_ex"
+    ];
+
+    for question_name in question_names.iter() {
+        let name = dir_name.to_owned() + "/" + &question_name.to_string() + ".py";
         let file_exists = match fs::metadata(&name) {
             Ok(_) => true,
             Err(_) => false,
