@@ -28,16 +28,16 @@ fn main() {
 }
 
 fn make_python_file(path: &String) {
-    for file_name in 'a'..='g' {
-        let full_name = path.to_owned() + &file_name.to_string() + ".py";
-        let file_exists = match fs::metadata(&full_name) {
+    for alphabet in 'a'..='g' {
+        let name = path.to_owned() + &alphabet.to_string() + ".py";
+        let file_exists = match fs::metadata(&name) {
             Ok(_) => true,
             Err(_) => false,
         };
 
         if file_exists == false {
-            println!("creating file: {}", &full_name);
-            fs::File::create(&full_name).unwrap();
+            println!("creating file: {}", &name);
+            fs::File::create(&name).unwrap();
         }
     }
 }
