@@ -28,9 +28,10 @@ fn make_directory(path: &String) {
 }
 
 fn make_python_files(dir_name: &String) {
-    let question_names = vec![
-        "a", "b", "c", "d", "e", "f", "g", "_ex"
-    ];
+    let mut question_names = ('a'..='g')
+        .map(|c| c.to_string())
+        .collect::<Vec<String>>();
+    question_names.push(String::from("_ex"));
 
     for question_name in question_names.iter() {
         let name = dir_name.to_owned() + "/" + &question_name.to_string() + ".py";
