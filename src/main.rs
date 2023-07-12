@@ -37,7 +37,7 @@ fn make_python_files(dir_name: &String) {
     question_names.push(String::from("_ex"));
 
     for question_name in question_names.iter() {
-        let name = dir_name.to_owned() + "/" + &question_name.to_string() + ".py";
+        let name = format!("{}/{}.py", dir_name, question_name);
         let file_exists = match fs::metadata(&name) {
             Ok(_) => true,
             Err(_) => false,
@@ -51,7 +51,7 @@ fn make_python_files(dir_name: &String) {
 }
 
 fn make_info_file(dir_name: &String) {
-    let name = dir_name.to_owned() + "/" + "info.txt";
+    let name = format!("{}/info.txt", dir_name);
     let file_exists = match fs::metadata(&name) {
         Ok(_) => true,
         Err(_) => false,
