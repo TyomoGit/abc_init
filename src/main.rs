@@ -9,16 +9,15 @@ fn main() {
     if args.len() == 1 {
         make_python_files(&String::from("."));
         make_info_file(&String::from("."));
-        return;
-    }
-
-    for arg in args.iter() {
-        if arg == &args[0] { continue; }
-
-        let dir_name = &arg.to_owned();
-        make_directory(&dir_name);
-        make_python_files(&dir_name);
-        make_info_file(dir_name);
+    } else {
+        for arg in args.iter() {
+            if arg == &args[0] { continue; }
+    
+            let dir_name = &arg.to_owned();
+            make_directory(&dir_name);
+            make_python_files(&dir_name);
+            make_info_file(dir_name);
+        }
     }
 
     println!("Done");
