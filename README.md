@@ -16,5 +16,9 @@ atcoder_init
 
 To create Python files in specific directories, run the following command:
 ```
-atcoder_init dir1 dir2 dir3
+atcoder_init dirName
+```
+You can specify multiple directories.
+```
+atcoder_init dirName1 dirName2 dirName3
 ```
