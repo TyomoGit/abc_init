@@ -9,7 +9,7 @@ cargo build --release
 Put it in the appropriate directory.
 
 ## Example
-To create Python files `a.py`, `b.py`, ..., `g.py` in the current directory, run the following command:
+To create Python files `a.py`, `b.py`, ..., `g.py`, and `_ex.py` in the current directory, run the following command:
 ```
 atcoder_init
 ```
