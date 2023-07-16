@@ -1,14 +1,14 @@
 # abc_init
 A tool for AtCoder Beginner Contest question practice.
 
-## Usage
+## Build
 build this program.
 ```
 cargo build --release
 ```
 Put it in the appropriate directory.
 
-## Example
+## Usage
 To create Python files `a.py`, `b.py`, ..., `g.py`, and `_ex.py` in the current directory, run the following command:
 ```
 atcoder_init
