@@ -7,16 +7,19 @@ fn main() {
     let args: Vec<String> = env::args().collect();
 
     if args.len() == 1 {
-        make_python_files(&String::from("."));
-        make_info_file(&String::from("."));
+        let dir_name = String::from(".");
+        make_python_files(&dir_name);
+        make_info_file(&dir_name);
+        make_input_file(&dir_name);
     } else {
         for arg in args.iter() {
             if arg == &args[0] { continue; }
     
-            let dir_name = &arg.to_owned();
+            let dir_name = arg;
             make_directory(&dir_name);
             make_python_files(&dir_name);
-            make_info_file(dir_name);
+            make_info_file(&dir_name);
+            make_input_file(&dir_name);
         }
     }
 
@@ -38,11 +41,7 @@ fn make_python_files(dir_name: &String) {
 
     for question_name in question_names.iter() {
         let name = format!("{}/{}.py", dir_name, question_name);
-        let file_exists = match fs::metadata(&name) {
-            Ok(_) => true,
-            Err(_) => false,
-        };
-
+        let file_exists = fs::metadata(&name).is_ok();
         if file_exists == true{ continue; }
 
         println!("creating file: {}", &name);
@@ -51,16 +50,24 @@ fn make_python_files(dir_name: &String) {
 }
 
 fn make_info_file(dir_name: &String) {
-    let name = format!("{}/info.txt", dir_name);
-    let file_exists = match fs::metadata(&name) {
-        Ok(_) => true,
-        Err(_) => false,
-    };
+    let name = format!("{}/note.txt", dir_name);
 
+    let file_exists = fs::metadata(&name).is_ok();
     if file_exists == true { return; }
 
     println!("creating file: {}", &name);
     let mut file = fs::File::create(&name).unwrap();
     let now = chrono::Local::now().format("%Y/%m/%d %H:%M").to_string();
-    write!(file, "Created at {}", now).unwrap();
+    writeln!(file, "{}", dir_name).unwrap();
+    writeln!(file, "Created at {}", now).unwrap();
+}
+
+fn make_input_file(dir_name: &String) {
+    let name = format!("{}/input.txt", dir_name);
+
+    let file_exists = fs::metadata(&name).is_ok();
+    if file_exists == true { return; }
+
+    println!("creating file: {}", &name);
+    fs::File::create(&name).unwrap();
 }
